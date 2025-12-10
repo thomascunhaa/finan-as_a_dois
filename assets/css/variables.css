@@ -1,25 +1,17 @@
 :root {
   /* Paleta de Cores */
-  --color-primary: #1F5EA8; /* Azul confiança */
-  --color-secondary: #2CB67D; /* Verde harmonia */
-  --color-accent-gold: #D4AF37; /* Dourado destaque */
-  --color-bg: #F5F7FB; /* Fundo suave */
-  --color-surface: #FFFFFF;
+  --color-pink-light: #F7DDE2;
+  --color-green-soft: #9ED2C6;
+  --color-gray-light: #ECECEC;
+  --color-black-soft: #404040;
   --color-white: #FFFFFF;
-  --color-black-soft: #2B2C34;
-  --color-text-main: #2B2C34;
-  --color-text-muted: #667085;
-  --color-gray-light: #E7EEF6;
-  --color-danger: #E45858;
-  --color-success: #2CB67D;
-
-  /* Compatibilidade com variáveis existentes */
-  --color-pink-light: #DCE7F7;
-  --color-green-soft: var(--color-secondary);
+  --color-text-main: #404040;
+  --color-text-muted: #757575;
+  --color-danger: #ff6b6b;
+  --color-success: #51cf66;
 
   /* Fontes */
   --font-family-main: 'Inter', sans-serif;
-  --font-family-heading: 'Poppins', 'Inter', sans-serif;
 
   /* Espaçamentos */
   --spacing-xs: 4px;

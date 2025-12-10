@@ -11,25 +11,25 @@
 }
 
 .btn-primary {
-    background-color: var(--color-primary);
-    color: #fff;
+    background-color: var(--color-green-soft);
+    color: var(--color-black-soft);
 }
 
 .btn-primary:hover {
-    filter: brightness(1.05);
+    filter: brightness(0.95);
     transform: translateY(-1px);
-    box-shadow: 0 8px 20px rgba(31, 94, 168, 0.25);
+    box-shadow: var(--shadow-sm);
 }
 
 .btn-secondary {
-    background-color: var(--color-secondary);
-    color: #fff;
+    background-color: var(--color-pink-light);
+    color: var(--color-black-soft);
 }
 
 .btn-secondary:hover {
-    filter: brightness(1.05);
+    filter: brightness(0.95);
     transform: translateY(-1px);
-    box-shadow: 0 8px 20px rgba(44, 182, 125, 0.25);
+    box-shadow: var(--shadow-sm);
 }
 
 .btn-outline {
@@ -39,7 +39,7 @@
 }
 
 .btn-outline:hover {
-    border-color: var(--color-accent-gold);
+    border-color: var(--color-text-main);
     color: var(--color-text-main);
 }
 
@@ -134,22 +134,8 @@
     left: 0;
     width: 100%;
     height: 2px;
-    background-color: var(--color-accent-gold);
+    background-color: var(--color-green-soft);
     border-radius: 2px;
 }
 
-.nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-    width: 0%;
-    height: 2px;
-    background-color: var(--color-primary);
-    border-radius: 2px;
-    transition: width 0.25s ease;
-}
-
-.nav-link:hover::after {
-    width: 100%;
-}
+/* underline hover removed to restore original design */
