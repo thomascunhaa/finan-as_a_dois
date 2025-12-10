@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Finanças a Dois</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/variables.css">
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="dashboard.html" class="nav-logo">
+                <span>💰</span> Finanças a Dois
+            </a>
+            <div class="nav-links">
+                <a href="dashboard.html" class="nav-link active">Dashboard</a>
+                <a href="transacoes.html" class="nav-link">Transações</a>
+                <a href="metas.html" class="nav-link">Metas</a>
+                <a href="configuracoes.html" class="nav-link">Config</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container main-content">
+        <!-- Header do Dashboard -->
+        <header class="flex justify-between items-center" style="margin-bottom: var(--spacing-lg);">
+            <div>
+                <h1 style="font-size: 1.8rem; font-weight: 700;">Visão Geral</h1>
+                <p class="text-muted">Balanço do mês de <span id="currentMonth">Dezembro</span></p>
+            </div>
+            <a href="transacoes.html?action=new" class="btn btn-primary">+ Nova Transação</a>
+        </header>
+
+        <!-- Cards de Resumo -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--spacing-md); margin-bottom: var(--spacing-xl);">
+            <div class="card">
+                <p class="text-muted form-label">Receitas</p>
+                <h2 id="valReceitas" style="color: var(--color-success); font-size: 1.8rem; font-weight: 700;">...</h2>
+            </div>
+            <div class="card">
+                <p class="text-muted form-label">Despesas</p>
+                <h2 id="valDespesas" style="color: var(--color-danger); font-size: 1.8rem; font-weight: 700;">...</h2>
+            </div>
+            <div class="card">
+                <p class="text-muted form-label">Saldo</p>
+                <h2 id="valSaldo" style="color: var(--color-black-soft); font-size: 1.8rem; font-weight: 700;">...</h2>
+            </div>
+        </div>
+
+        <!-- Gráficos e Detalhes (Placeholder) -->
+        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: var(--spacing-md);">
+            <div class="card">
+                <h3 class="form-label" style="font-size: 1.1rem; margin-bottom: var(--spacing-md);">Gastos por Categoria</h3>
+                <div id="categoryChartContainer" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <!-- Gráfico será injetado aqui -->
+                    <div class="chart-container">
+                        <div class="donut-chart" style="background: conic-gradient(#eee 0% 100%);"></div>
+                        <div class="donut-center">
+                            <span style="font-size: 0.8rem; color: #999;">Sem dados</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <h3 class="form-label" style="font-size: 1.1rem; margin-bottom: var(--spacing-md);">Divisão de Gastos</h3>
+                <ul id="splitList" style="display: flex; flex-direction: column; gap: var(--spacing-sm);">
+                    <!-- Lista será injetada via JS -->
+                    <li class="text-center text-muted">Carregando...</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/api.js"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+</html>

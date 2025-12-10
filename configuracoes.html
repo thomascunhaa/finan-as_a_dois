@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configurações - Finanças a Dois</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/variables.css">
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="dashboard.html" class="nav-logo">
+                <span>💰</span> Finanças a Dois
+            </a>
+            <div class="nav-links">
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <a href="transacoes.html" class="nav-link">Transações</a>
+                <a href="metas.html" class="nav-link">Metas</a>
+                <a href="configuracoes.html" class="nav-link active">Config</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container main-content">
+        <h1 style="font-size: 1.8rem; font-weight: 700; margin-bottom: var(--spacing-lg);">Configurações</h1>
+
+        <div class="card" style="max-width: 600px;">
+            <h2 style="margin-bottom: var(--spacing-md);">Conexão com Google Sheets</h2>
+            <p class="text-muted" style="margin-bottom: var(--spacing-md);">
+                Insira a URL da sua Web App do Google Apps Script abaixo para conectar o frontend à sua planilha.
+            </p>
+            
+            <form id="configForm">
+                <div class="form-group">
+                    <label class="form-label">API URL</label>
+                    <input type="url" id="apiUrl" class="form-input" placeholder="https://script.google.com/macros/s/..." required>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Salvar Configuração</button>
+            </form>
+        </div>
+        
+        <div class="card" style="max-width: 600px; margin-top: var(--spacing-md);">
+            <h2 style="margin-bottom: var(--spacing-md);">Perfil do Casal</h2>
+            <form id="namesForm" onsubmit="handleNamesSubmit(event)">
+                <div class="form-group">
+                    <label class="form-label">Nome (Pessoa 1)</label>
+                    <input type="text" name="user1_name" class="form-input" placeholder="Ex: Thomas" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Nome (Pessoa 2)</label>
+                    <input type="text" name="user2_name" class="form-input" placeholder="Ex: Maria" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Salvar Nomes</button>
+            </form>
+        </div>
+        
+        <div class="card" style="max-width: 600px; margin-top: var(--spacing-md);">
+            <h2 style="margin-bottom: var(--spacing-md);">Segurança</h2>
+            <form id="securityForm" onsubmit="handleSecuritySubmit(event)">
+                <div class="form-group">
+                    <label class="form-label">PIN de Acesso (4 dígitos)</label>
+                    <input type="password" name="access_pin" class="form-input" placeholder="****" maxlength="4" pattern="\d{4}" required inputmode="numeric">
+                </div>
+                <button type="submit" class="btn btn-primary">Salvar PIN</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="assets/js/api.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script>
+        // Load saved URL
+        const savedUrl = localStorage.getItem('api_url');
+        if (savedUrl) {
+            document.getElementById('apiUrl').value = savedUrl;
+        }
+
+        // Save URL
+        document.getElementById('configForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const url = document.getElementById('apiUrl').value;
+            localStorage.setItem('api_url', url);
+            alert('Configuração salva com sucesso!');
+        });
+    </script>
+</body>
+</html>

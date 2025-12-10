@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transações - Finanças a Dois</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/variables.css">
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="dashboard.html" class="nav-logo">
+                <span>💰</span> Finanças a Dois
+            </a>
+            <div class="nav-links">
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <a href="transacoes.html" class="nav-link active">Transações</a>
+                <a href="metas.html" class="nav-link">Metas</a>
+                <a href="configuracoes.html" class="nav-link">Config</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container main-content">
+        <header class="flex justify-between items-center" style="margin-bottom: var(--spacing-lg);">
+            <h1 style="font-size: 1.8rem; font-weight: 700;">Transações</h1>
+            <button class="btn btn-primary" onclick="openModal('transactionModal')">+ Nova Transação</button>
+        </header>
+
+        <!-- Filtros -->
+        <div class="card" style="margin-bottom: var(--spacing-lg); padding: var(--spacing-md);">
+            <div class="flex gap-md" style="flex-wrap: wrap;">
+                <div style="flex: 1;">
+                    <input type="text" class="form-input" placeholder="Buscar...">
+                </div>
+                <div>
+                    <select class="form-select">
+                        <option>Todas as Categorias</option>
+                        <option>Alimentação</option>
+                        <option>Moradia</option>
+                        <option>Lazer</option>
+                        <option>Conta de Água</option>
+                        <option>Conta de Luz</option>
+                    </select>
+                </div>
+                <div>
+                    <input type="month" class="form-input">
+                </div>
+            </div>
+        </div>
+
+        <!-- Lista de Transações -->
+        <div class="card" style="padding: 0; overflow: hidden;">
+            <table style="width: 100%; border-collapse: collapse;">
+                <thead style="background-color: var(--color-gray-light);">
+                    <tr>
+                        <th style="padding: 16px; text-align: left; font-weight: 600;">Data</th>
+                        <th style="padding: 16px; text-align: left; font-weight: 600;">Descrição</th>
+                        <th style="padding: 16px; text-align: left; font-weight: 600;">Categoria</th>
+                        <th style="padding: 16px; text-align: left; font-weight: 600;">Quem</th>
+                        <th style="padding: 16px; text-align: right; font-weight: 600;">Valor</th>
+                        <th style="padding: 16px; text-align: center; font-weight: 600;">Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="transactionsList">
+                    <!-- Loading or Empty State -->
+                    <tr>
+                        <td colspan="6" style="padding: 16px; text-align: center; color: var(--color-text-muted);">Carregando transações...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Modal de Nova Transação (Simplificado) -->
+    <div id="transactionModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); align-items: center; justify-content: center; z-index: 1000;">
+        <div class="card" style="width: 100%; max-width: 500px; max-height: 90vh; overflow-y: auto;">
+            <h2 style="margin-bottom: var(--spacing-md);">Nova Transação</h2>
+            <form id="transactionForm" onsubmit="handleTransactionSubmit(event)">
+                <div class="form-group">
+                    <label class="form-label">Tipo</label>
+                    <div class="flex gap-md">
+                        <label style="flex: 1; cursor: pointer;">
+                            <input type="radio" name="type" value="expense" checked> Despesa
+                        </label>
+                        <label style="flex: 1; cursor: pointer;">
+                            <input type="radio" name="type" value="income"> Receita
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Valor</label>
+                    <input type="number" class="form-input" placeholder="0,00">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Descrição</label>
+                    <input type="text" class="form-input" placeholder="Ex: Jantar fora">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Categoria</label>
+                    <select class="form-select" name="category">
+                        <option>Alimentação</option>
+                        <option>Transporte</option>
+                        <option>Lazer</option>
+                        <option>Moradia</option>
+                        <option>Saúde</option>
+                        <option>Educação</option>
+                        <option>Outros</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Quem pagou?</label>
+                    <select class="form-select" name="user">
+                        <option value="user1">Pessoa 1</option>
+                        <option value="user2">Pessoa 2</option>
+                        <option value="shared">Ambos/Compartilhado</option>
+                    </select>
+                </div>
+                <div class="flex gap-md" style="margin-top: var(--spacing-lg);">
+                    <button type="button" class="btn btn-outline" style="flex: 1;" onclick="closeModal('transactionModal')">Cancelar</button>
+                    <button type="submit" class="btn btn-primary" style="flex: 1;">Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="assets/js/api.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script>
+        function openModal(id) {
+            document.getElementById(id).style.display = 'flex';
+        }
+        function closeModal(id) {
+            document.getElementById(id).style.display = 'none';
+        }
+    </script>
+</body>
+</html>

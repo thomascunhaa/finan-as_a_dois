@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão Financeira para Casais</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/variables.css">
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    
+    <style>
+        .login-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--color-pink-light) 0%, var(--color-gray-light) 100%);
+            padding: var(--spacing-md);
+        }
+        
+        .login-card {
+            width: 100%;
+            max-width: 400px;
+            background: var(--color-white);
+            padding: 40px;
+            border-radius: 24px;
+            box-shadow: var(--shadow-lg);
+            text-align: center;
+        }
+        
+        .login-icon {
+            font-size: 3rem;
+            margin-bottom: var(--spacing-md);
+            display: inline-block;
+            background: var(--color-green-soft);
+            width: 80px;
+            height: 80px;
+            line-height: 80px;
+            border-radius: 50%;
+            color: var(--color-white);
+        }
+        
+        .login-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-sm);
+            color: var(--color-black-soft);
+        }
+        
+        .login-subtitle {
+            color: var(--color-text-muted);
+            margin-bottom: var(--spacing-xl);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <div class="login-card fade-in">
+            <div class="login-icon">💰</div>
+            <h1 class="login-title">Finanças a Dois</h1>
+            <p class="login-subtitle">Gerencie seus sonhos e gastos em conjunto.</p>
+            
+            <form id="loginForm" onsubmit="handleLogin(event)">
+                <div class="form-group text-left">
+                    <label class="form-label" style="text-align: center; display: block;">PIN de Acesso</label>
+                    <input type="password" id="loginPin" class="form-input" placeholder="****" maxlength="4" pattern="\d{4}" inputmode="numeric" style="text-align: center; font-size: 1.5rem; letter-spacing: 0.5rem;" required>
+                </div>
+                
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;">
+                    Entrar
+                </button>
+            </form>
+            <p id="loginError" class="text-danger" style="margin-top: 10px; display: none; color: #e53935;">PIN incorreto</p>
+        </div>
+    </div>
+
+    <script src="assets/js/api.js"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+</html>
