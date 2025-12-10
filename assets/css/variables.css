@@ -1,0 +1,41 @@
+:root {
+  /* Paleta de Cores */
+  --color-primary: #1F5EA8; /* Azul confiança */
+  --color-secondary: #2CB67D; /* Verde harmonia */
+  --color-accent-gold: #D4AF37; /* Dourado destaque */
+  --color-bg: #F5F7FB; /* Fundo suave */
+  --color-surface: #FFFFFF;
+  --color-white: #FFFFFF;
+  --color-black-soft: #2B2C34;
+  --color-text-main: #2B2C34;
+  --color-text-muted: #667085;
+  --color-gray-light: #E7EEF6;
+  --color-danger: #E45858;
+  --color-success: #2CB67D;
+
+  /* Compatibilidade com variáveis existentes */
+  --color-pink-light: #DCE7F7;
+  --color-green-soft: var(--color-secondary);
+
+  /* Fontes */
+  --font-family-main: 'Inter', sans-serif;
+  --font-family-heading: 'Poppins', 'Inter', sans-serif;
+
+  /* Espaçamentos */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+
+  /* Bordas */
+  --border-radius-sm: 8px;
+  --border-radius-md: 12px;
+  --border-radius-lg: 20px;
+  --border-radius-circle: 50%;
+
+  /* Sombras */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+}

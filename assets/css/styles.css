@@ -1,0 +1,267 @@
+/* Layout Global */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+}
+
+.main-content {
+    padding: var(--spacing-lg) 0;
+    min-height: calc(100vh - 80px);
+    /* Aproximadamente altura do header/nav */
+}
+
+/* Utilitários de Texto */
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-bold {
+    font-weight: 600;
+}
+
+.text-muted {
+    color: var(--color-text-muted);
+}
+
+/* Utilitários de Flexbox */
+.flex {
+    display: flex;
+}
+
+.flex-col {
+    flex-direction: column;
+}
+
+.items-center {
+    align-items: center;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.gap-sm {
+    gap: var(--spacing-sm);
+}
+
+.gap-md {
+    gap: var(--spacing-md);
+}
+
+/* Animações */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Loading States */
+.btn-loading {
+    position: relative;
+    color: transparent !important;
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+.btn-loading::after {
+    content: "";
+    position: absolute;
+    width: 1.2em;
+    height: 1.2em;
+    top: 50%;
+    left: 50%;
+    margin-top: -0.6em;
+    margin-left: -0.6em;
+    border: 2px solid currentColor;
+    /* Use text color */
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    color: inherit;
+    /* Inherit from button original color if needed, or white */
+}
+
+/* Force spinner color if button is primary (usually white text) */
+.btn-primary.btn-loading::after {
+    border-color: #fff;
+    border-bottom-color: transparent;
+}
+
+.btn-outline.btn-loading::after {
+    border-color: var(--color-primary, #6246ea);
+    /* Fallback or var */
+    border-bottom-color: transparent;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Charts */
+.chart-container {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+
+.donut-chart {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    position: relative;
+    /* transition: conic-gradient is not well supported, rerender is fine */
+}
+
+.donut-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+    height: 70%;
+    background: var(--color-white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.chart-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+}
+
+.legend-color {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+/* Toast Notifications */
+#toast-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.toast {
+    background: white;
+    padding: 15px 20px;
+    border-radius: var(--border-radius-md);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-left: 4px solid var(--color-primary);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 300px;
+    animation: slideIn 0.3s ease-out;
+    font-size: 0.9rem;
+    color: var(--color-black-soft);
+}
+
+.toast.error {
+    border-left-color: var(--color-danger);
+}
+
+.toast.success {
+    border-left-color: var(--color-success);
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Tipografia */
+h1, h2, h3 {
+    font-family: var(--font-family-heading);
+    color: var(--color-text-main);
+}
+
+h1 { font-weight: 700; font-size: 2rem; }
+h2 { font-weight: 600; font-size: 1.6rem; }
+h3 { font-weight: 600; font-size: 1.2rem; }
+
+@media (max-width: 768px) {
+    h1 { font-size: 1.6rem; }
+    h2 { font-size: 1.4rem; }
+    h3 { font-size: 1.1rem; }
+}
+
+/* Ícones */
+.icon {
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.icon-couple {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cg fill='none' stroke='%231F5EA8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='8' cy='8' r='3'/%3E%3Ccircle cx='16' cy='8' r='3'/%3E%3Cpath d='M3 21c0-3.866 3.582-7 8-7s8 3.134 8 7'/%3E%3Cpath d='M12 14c2.5 0 4.5-.5 6-1.5'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.icon-budget {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cg fill='none' stroke='%23D4AF37' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='6' width='18' height='12' rx='3'/%3E%3Cpath d='M7 10h5M7 14h8'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.icon-split {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cg fill='none' stroke='%232CB67D' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3v18'/%3E%3Cpath d='M5 7c2 0 3 2 7 2s5-2 7-2'/%3E%3Cpath d='M5 17c2 0 3-2 7-2s5 2 7 2'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+    .container { padding: 0 var(--spacing-sm); }
+}
+
+@media (max-width: 640px) {
+    .nav-links { gap: var(--spacing-md); }
+}
